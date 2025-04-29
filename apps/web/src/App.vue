@@ -8,11 +8,12 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
 import { formatDate, getRandomHexColor } from "@for-study/tools";
-const date = formatDate(new Date(), "{Y}-{M}-{D} {H}:{I}:{S}");
 
+const date = formatDate(new Date(), "{Y}-{M}-{D} {H}:{I}:{S}");
 const bgColor = ref("");
 const divStyle = computed(() => {
   return {
+    cursor: "pointer",
     width: "100px",
     height: "100px",
     backgroundColor: bgColor.value,
