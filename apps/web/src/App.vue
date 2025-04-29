@@ -24,6 +24,7 @@ function setBgColor() {
   bgColor.value = getRandomHexColor();
   console.log("setBgColor:", bgColor.value);
   console.log("divStyle:", divStyle.value);
+  console.log("test for cicd log");
 }
 
 onMounted(setBgColor);
