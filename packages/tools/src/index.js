@@ -41,3 +41,11 @@ export function formatDate(date, template) {
   }
   return formated;
 }
+
+/**
+ * get a random hex color string
+ * @return {string}
+ */
+export function getRandomHexColor() {
+  return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
+}
