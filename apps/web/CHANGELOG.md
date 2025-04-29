@@ -1,5 +1,11 @@
 # @for-study/web
 
+## 0.1.2
+
+### Patch Changes
+
+- fd1137d: update github actions workflows config file
+
 ## 0.1.1
 
 ### Patch Changes
