@@ -23,6 +23,7 @@ const divStyle = computed(() => {
 function setBgColor() {
   bgColor.value = getRandomHexColor();
   console.log("setBgColor:", bgColor.value);
+  console.log("divStyle:", divStyle.value);
 }
 
 onMounted(setBgColor);
