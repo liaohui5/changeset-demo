@@ -1,5 +1,11 @@
 # @for-study/web
 
+## 0.1.3
+
+### Patch Changes
+
+- f787000: update cicd with publish
+
 ## 0.1.2
 
 ### Patch Changes
