@@ -1,0 +1,10 @@
+{
+  "name": "@for-study/root",
+  "version": "0.0.1",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @for-study/web dev"
+  },
+  "packageManager": "pnpm@10.10.0"
+}
