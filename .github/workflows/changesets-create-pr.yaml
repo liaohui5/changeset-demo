@@ -39,11 +39,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+
+      # echo -e "@for-study:registry=https://${{ vars.NPM_HOST }}\n//${{ vars.NPM_HOST }}:_authToken=${{ vars.NPM_TOKEN }}" > .npmrc
+      # echo "===== .npmrc contents ====="
+      # cat .npmrc
       - name: Generate npmrc config file
         run: |
-          echo -e "@for-study:registry=https://${{ secrets.NPM_HOST }}\n//${{ secrets.NPM_HOST }}:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
-          echo "===== .npmrc contents ====="
-          cat .npmrc
           echo "===== files ====="
           ls -la
 
