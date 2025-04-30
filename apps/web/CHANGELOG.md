@@ -1,5 +1,11 @@
 # @for-study/web
 
+## 0.1.11
+
+### Patch Changes
+
+- e31d270: for test cicd publish to verdaccio 8
+
 ## 0.1.10
 
 ### Patch Changes
