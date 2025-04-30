@@ -25,7 +25,7 @@ function setBgColor() {
   console.log("setBgColor:", bgColor.value);
   console.log("divStyle:", divStyle.value);
   console.log("test for cicd tag");
-  console.log("test for cicd publish 22");
+  console.log("test for cicd publish 3");
 }
 
 onMounted(setBgColor);
