@@ -41,11 +41,11 @@ jobs:
 
       - name: Generate npmrc config
         env:
-          NPM_HOST: ${{ secrets.NPM_HOST }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_HOST_STR: ${{ secrets.NPM_HOST }}
+          NPM_TOKEN_STR: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo -e "registry=https://${NPM_HOST}" >> .npmrc
-          echo -e "//${NPM_HOST}:_authToken=${NPM_TOKEN}" >> .npmrc
+          echo "registry=https://${NPM_HOST_STR}" >> .npmrc
+          echo "//${NPM_HOST_STR}:_authToken=${NPM_TOKEN_STR}" >> .npmrc
 
       - name: Validate npmrc config
         # `cat .npmrc` for debug, don't forget remove in production
