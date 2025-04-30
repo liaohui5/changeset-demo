@@ -1,5 +1,11 @@
 # @for-study/web
 
+## 0.1.9
+
+### Patch Changes
+
+- 8154bcf: for test cicd publish 6
+
 ## 0.1.8
 
 ### Patch Changes
