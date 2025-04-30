@@ -40,9 +40,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Generate npmrc config
-        run: |
-          echo "registry=https://${{ vars.NPM_HOST }}" >> .npmrc
-          echo "//${{ vars.NPM_HOST }}:_authToken=${{ vars.NPM_AUTH_KEY }}" >> .npmrc
+        run: echo "${{ vars.NPMRC }}" > .npmrc
 
       - name: Validate npmrc config
         # `cat .npmrc` for debug, don't forget remove in production
