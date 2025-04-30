@@ -41,7 +41,7 @@ jobs:
 
       - name: Generate npmrc config file
         run: |
-          echo -e "registry=${{ secrets.NPM_REGISTRY }}\n${{ secrets.NPM_REGISTRY }}:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+          echo -e "registry=${{ secrets.NPM_REGISTRY }}\n${{ secrets.NPM_REGISTRY }}:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
           echo "===== .npmrc contents ====="
           cat .npmrc
 
