@@ -39,12 +39,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Generate npmrc config file
+        run: |
+          echo -e "registry=${{ secrets.NPM_REGISTRY }}\n${{ secrets.NPM_REGISTRY }}:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
+          echo "===== .npmrc contents ====="
+          cat .npmrc
+
       - name: Create PR and publish
         id: changesets
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           commit: "chore(changeset): update versions"
           title: "chore(changeset): update versions"
-          publish: pnpm changeset tag
+          publish: pnpm changeset publish --tag
