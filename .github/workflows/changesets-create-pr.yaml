@@ -41,9 +41,8 @@ jobs:
 
       - name: Generate npmrc config
         run: |
-          echo -e "@for-study:registry=https://${{ secrets.NPM_HOST }}" >> .npmrc
+          echo -e "registry=https://${{ secrets.NPM_HOST }}" >> .npmrc
           echo -e "//${{ secrets.NPM_HOST }}:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
-          echo "always-auth=true" >> .npmrc
           ls -al
           npm config list
           npm whoami
