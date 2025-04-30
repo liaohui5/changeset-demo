@@ -39,14 +39,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # echo -e "registry=https://${{ secrets.NPM_HOST }}" >> .npmrc
-      # echo -e "//${{ secrets.NPM_HOST }}:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
       - name: Generate npmrc config
+        env:
+          NPM_HOST: ${{ secrets.NPM_HOST }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          ls -al
-          cat .npmrc || echo "not found file: .npmrc"
-          npm config list
-          npm whoami
+          echo -e "registry=https://${NPM_HOST}" >> .npmrc
+          echo -e "//${NPM_HOST}:_authToken=${NPM_TOKEN}" >> .npmrc
+
+      - name: Validate npmrc config
+        # `cat .npmrc` for debug, don't forget remove in production
+        run: |
+          echo ">>> files" && ls -al
+          echo ">>> npmrc" && cat .npmrc
+          echo ">>> whoami" && npm whoami
 
       - name: Create PR or publish release
         id: changesets
@@ -57,7 +63,7 @@ jobs:
         with:
           commit: "chore(changeset): update versions"
           title: "chore(changeset): update versions"
-          publish: npx changeset publish --tag
+          # publish: npx changeset publish
 
       - name: Clean up
         run: |
