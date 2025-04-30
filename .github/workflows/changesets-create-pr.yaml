@@ -40,12 +40,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Generate npmrc config
-        env:
-          NPM_HOST_STR: ${{ secrets.NPM_HOST }}
-          NPM_TOKEN_STR: ${{ secrets.NPM_TOKEN }}
         run: |
-          echo "registry=https://${NPM_HOST_STR}" >> .npmrc
-          echo "//${NPM_HOST_STR}:_authToken=${NPM_TOKEN_STR}" >> .npmrc
+          echo "registry=https://${{ vars.NPM_HOST }}" >> .npmrc
+          echo "//${{ vars.NPM_HOST }}:_authToken=${{ vars.NPM_TOKEN }}" >> .npmrc
 
       - name: Validate npmrc config
         # `cat .npmrc` for debug, don't forget remove in production
@@ -59,7 +56,7 @@ jobs:
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ vars.NPM_TOKEN }}
         with:
           commit: "chore(changeset): update versions"
           title: "chore(changeset): update versions"
