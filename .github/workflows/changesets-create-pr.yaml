@@ -39,11 +39,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # echo -e "registry=https://${{ secrets.NPM_HOST }}" >> .npmrc
+      # echo -e "//${{ secrets.NPM_HOST }}:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
       - name: Generate npmrc config
         run: |
-          echo -e "registry=https://${{ secrets.NPM_HOST }}" >> .npmrc
-          echo -e "//${{ secrets.NPM_HOST }}:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
           ls -al
+          cat .npmrc || echo "not found file: .npmrc"
           npm config list
           npm whoami
 
