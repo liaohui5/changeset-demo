@@ -1,5 +1,11 @@
 # @for-study/web
 
+## 0.1.4
+
+### Patch Changes
+
+- 38da757: for test cicd publish to verdaccio
+
 ## 0.1.3
 
 ### Patch Changes
