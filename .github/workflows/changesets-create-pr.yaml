@@ -39,21 +39,26 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Login to Verdaccio
+      - name: Generate npmrc config
         run: |
-          pnpm config set @for-study:registry https://yyy.liaohui5.cn
-          pnpm config set //yyy.liaohui5.cn:_authToken eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsX2dyb3VwcyI6WyJhZG1pbiJdLCJuYW1lIjoiYWRtaW4iLCJncm91cHMiOlsiYWRtaW4iLCIkYWxsIiwiJGF1dGhlbnRpY2F0ZWQiLCJAYWxsIiwiQGF1dGhlbnRpY2F0ZWQiLCJhbGwiXSwiaWF0IjoxNzQ2MDM0NjcxLCJuYmYiOjE3NDYwMzQ2NzIsImV4cCI6MTc0ODYyNjY3MX0.7-Wuwd064uyl_spIBsMX4IMussoeP5SVhXOG1IxySck
-          pnpm config list
-          pnpm whoami
-          echo "Logged in to Verdaccio"
+          echo -e "@for-study:registry=https://${{ secrets.NPM_HOST }}\n//${{ secrets.NPM_HOST }}:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          ls -al
+          npm config list
+          npm whoami
 
       - name: Create PR or publish release
         id: changesets
         uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsX2dyb3VwcyI6WyJhZG1pbiJdLCJuYW1lIjoiYWRtaW4iLCJncm91cHMiOlsiYWRtaW4iLCIkYWxsIiwiJGF1dGhlbnRpY2F0ZWQiLCJAYWxsIiwiQGF1dGhlbnRpY2F0ZWQiLCJhbGwiXSwiaWF0IjoxNzQ2MDM0NjcxLCJuYmYiOjE3NDYwMzQ2NzIsImV4cCI6MTc0ODYyNjY3MX0.7-Wuwd064uyl_spIBsMX4IMussoeP5SVhXOG1IxySck
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           commit: "chore(changeset): update versions"
           title: "chore(changeset): update versions"
           publish: pnpm changeset publish --tag
+
+      - name: Clean up
+        run: |
+          echo "Cleaning up..."
+          rm -rf .npmrc
+          ls -al
