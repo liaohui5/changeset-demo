@@ -1,5 +1,11 @@
 # @for-study/web
 
+## 0.1.6
+
+### Patch Changes
+
+- fe49f44: for test cicd publish
+
 ## 0.1.5
 
 ### Patch Changes
