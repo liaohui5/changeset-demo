@@ -57,7 +57,7 @@ jobs:
         with:
           commit: "chore(changeset): update versions"
           title: "chore(changeset): update versions"
-          publish: pnpm changeset publish --tag
+          publish: npx changeset publish --tag
 
       - name: Clean up
         run: |
