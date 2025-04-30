@@ -39,14 +39,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-
-      # echo -e "@for-study:registry=https://${{ vars.NPM_HOST }}\n//${{ vars.NPM_HOST }}:_authToken=${{ vars.NPM_TOKEN }}" > .npmrc
-      # echo "===== .npmrc contents ====="
-      # cat .npmrc
-      - name: Generate npmrc config file
+      - name: Login to Verdaccio
         run: |
-          echo "===== files ====="
-          ls -la
+          pnpm config set registry https://${{ secrets.NPM_HOST }}
+          pnpm config set //${{ secrets.NPM_HOST }}/:_authToken ${{ secrets.NPM_TOKEN }}
+          pnpm config list
+          pnpm whoami
+          echo "Logged in to Verdaccio"
 
       - name: Create PR or publish release
         id: changesets
