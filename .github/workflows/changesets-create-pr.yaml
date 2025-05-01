@@ -40,7 +40,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Generate npmrc config
-        run: echo "${{ vars.NPMRC }}" > .npmrc
+        run: echo "${{ secrets.NPMRC }}" > .npmrc
 
       - name: Validate npmrc config
         # `cat .npmrc` for debug, don't forget remove in production
@@ -58,7 +58,6 @@ jobs:
         with:
           commit: "chore(changeset): update versions"
           title: "chore(changeset): update versions"
-          # publish: npx changeset publish
 
       - name: Clean up
         run: |
