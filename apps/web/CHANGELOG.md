@@ -1,5 +1,11 @@
 # @for-study/web
 
+## 0.1.16
+
+### Patch Changes
+
+- db6b20e: test for cicd publish to verdaccio 23
+
 ## 0.1.15
 
 ### Patch Changes
