@@ -1,5 +1,16 @@
 # @for-study/web
 
+## 0.1.14
+
+### Patch Changes
+
+- dadca23: test for cicd publish to verdaccio 18
+- 4b15acc: test for cicd publish 16
+- f613379: test for cicd publish to verdaccio 19
+- 63fc4af: for test cicd publish to verdaccio 15
+- ec1793a: test for cicd publish to verdaccio 20
+- 620abeb: test for cicd publish to verdaccio 17
+
 ## 0.1.13
 
 ### Patch Changes
